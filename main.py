@@ -23,9 +23,9 @@ def export_report_to_pdf(report: str, file_name: str) -> None:
     pdf.output(file_name)
     print(f"Report exported successfully to {file_name}")
 
-max_analysts = 1
-topic = "Main us stock market news for 5 Jan 2025 and expectations for Jan 6 2025"
-thread = {"configurable": {"thread_id": "4"}}
+max_analysts = 2
+topic = "Top us tech stocks for January 2025"
+thread = {"configurable": {"thread_id": "5"}}
 
 for event in graph.stream({"topic":topic,
                            "max_analysts":max_analysts}, 

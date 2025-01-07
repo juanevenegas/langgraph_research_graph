@@ -187,7 +187,7 @@ section_writer_instructions = """You are an expert technical writer.
 Your task is to create a short, easily digestible section of a report based on a set of source documents.
 
 1. Analyze the content of the source documents: 
-- The name of each source document is at the start of the document, with the <Document tag.
+- The name of each source document is at the start of the document, with the <Document> tag.
 
 2. Create a report structure using markdown formatting:
 - Use ## for the section title
@@ -244,7 +244,7 @@ def write_section(state: InterviewState):
 
     # Write section using either the gathered source docs from interview (context) or the interview itself (interview)
     system_message = section_writer_instructions.format(focus=analyst.description)
-    section = llm.invoke([SystemMessage(content=system_message)]+[HumanMessage(content=f"Use this source to write your section: {context}")]) 
+    section = llm.invoke([SystemMessage(content=system_message)]+[HumanMessage(content=f"Use this source to write your section. context: {context}, interview: {interview}")]) 
 
     # Append it to state
     return {"sections": [section.content]}
